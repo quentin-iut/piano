@@ -1,0 +1,43 @@
+
+
+<div class="grid-global">
+  <div class="top-container">
+    <div class="checkbox-container">
+      <section class="example-section" *ngFor="let note of notes; let i = index">
+        <span class="example-list-section">
+          <mat-checkbox class="example-margin"
+                        [checked]="allComplete[i]"
+                        [indeterminate]="someComplete(note)"
+                        (change)="setAll($event.checked, note, i)">
+            {{note.name}}
+          </mat-checkbox>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let subNote of note.subNotes">
+              <mat-checkbox [(ngModel)]="subNote.completed"
+                            (ngModelChange)="updateAllComplete(note,i)">
+                {{subNote.name}}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </section>
+    </div>
+    <div class="btn-container">
+      <button class="btn-effect" *ngIf="!displayRep" (click)="affichageReponse()">Mettre à jour les tirages</button>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+      <div class="box c"><span>Quel est la note ?</span></div>
+      <!-- <div class="box d" ><span>{{note.value}}</span></div>
+      <div class="box a" *ngIf="displayRep"><span>La réponse est : {{note[answer]}}</span></div> -->
+      <div class="box b">
+          <button class="btn-effect" *ngIf="!displayRep" (click)="affichageReponse()">Afficher la réponse</button>
+          <button class="btn-effect" *ngIf="displayRep"(click)="next()">Suivant</button>
+      </div>
+      
+  </div>
+</div>
+

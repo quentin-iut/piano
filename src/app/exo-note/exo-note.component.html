@@ -1,0 +1,19 @@
+<div class="grid-global">
+    <div class="btn-niveau">
+        <button [class.selected]="niveau === NIVEAU_1"  (click)="setNote(NIVEAU_1)">Niveau 1</button>
+        <button [class.selected]="niveau === NIVEAU_2"  (click)="setNote(NIVEAU_2)">Niveau 2</button>
+        <button [class.selected]="niveau === NIVEAU_3"  (click)="setNote(NIVEAU_3)">Niveau 3</button>
+    </div>
+    
+    <div class="wrapper">
+        <div class="box c"><span>Quel est la note {{answer}} ?</span></div>
+        <div class="box d" ><span>{{note.value}}</span></div>
+        <div class="box a" *ngIf="displayRep"><span>La réponse est : {{note[answer]}}</span></div>
+        <div class="box b">
+            <button class="btn-effect" *ngIf="!displayRep" (click)="affichageReponse()">Afficher la réponse</button>
+            <button class="btn-effect" *ngIf="displayRep"(click)="next()">Suivant</button>
+        </div>
+        
+    </div>
+</div>
+
